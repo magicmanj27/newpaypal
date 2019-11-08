@@ -59,12 +59,12 @@
   <script>
   // function payWithPayPal(amount, username) {
     // alert(injectedData);
-    alert('hello');
+    // alert('hello');
 
   paypal.Buttons({
     createOrder: function(data, actions) {
-    //   alert("this is username", username);
-    // alert('Data', injectedData);
+      // alert("this is username", username);
+    alert('Data', injectedData);
     // alert('Data2', JSON.stringify(injectedData))
       return actions.order.create({
         purchase_units: [{
