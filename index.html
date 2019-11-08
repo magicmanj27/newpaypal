@@ -11,7 +11,7 @@
     </script>
   
 
-  <h1>Is this hoping2?</h1>
+  <h1>Is this me?</h1>
 
   <div id="paypal-button-container"></div>
 
@@ -55,10 +55,10 @@
     }).render('#paypal-button-container');
   </script> -->
 
-<!--   
+  
   <script>
-  function payWithPayPal(amount, username) {
-    alert('hello');
+  // function payWithPayPal(amount, username) {
+    // alert('hello');
 
   paypal.Buttons({
     createOrder: function(data, actions) {
@@ -68,10 +68,10 @@
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: data.amount
+            value: "100.00"
           },
           payee: {
-                email_address: data.username
+                email_address: "John@here.com"
           }
         }]
       });
@@ -92,7 +92,7 @@
       });
     }
   }).render('#paypal-button-container');
-  } -->
+  // }
 
   // document.addEventListener("message", function(event) {
   //   alert('message', event.data);
@@ -104,7 +104,7 @@
     // payWithPayPal();
 
     // alert(injectedData);
-<!-- </script> -->
+</script>
 
 
   </body>
