@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  </head>
+  
+  <body>
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=AT5KkBmP0fPPST3QSp3qM3oGm3_z7FooRJDw9bnisDat21I3S-KT4HGrNu5zVvw-qjJGFxjlSKzjrX0J">
+    </script>
+  
+
+  <h1>Is this me?</h1>
+
+  <div id="paypal-button-container"></div>
+
+  <!-- <script>
+    paypal.Buttons().render('#paypal-button-container');
+  </script> -->
+
+<!-- <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        // Set up the transaction
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '0.01'
+            }
+          }]
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+
+<script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '0.01'
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        // Capture the funds from the transaction
+        return actions.order.capture().then(function(details) {
+          // Show a success message to your buyer
+          alert('Transaction completed by ' + details.payer.name.given_name);
+        });
+      }
+    }).render('#paypal-button-container');
+  </script> -->
+
+  
+  <script>
+  // function payWithPayPal(amount, username) {
+    alert(injectedData);
+    alert('hello');
+
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+    //   alert("this is username", username);
+    // alert('Data', injectedData);
+    // alert('Data2', JSON.stringify(injectedData))
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: "100.00"
+          },
+          payee: {
+                email_address: "John@here.com"
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+        // Call your server to save the transaction
+        return fetch('/paypal', {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            orderID: data.orderID
+          })
+        });
+      });
+    }
+  }).render('#paypal-button-container');
+  // }
+  // document.addEventListener("message", function(event) {
+  //   alert('message', event.data);
+  //       // var details = JSON.parse(event.data);
+  //       // document.querySelector('p').innerText = "You are about to fund your wallet with USD "+details.amount+" on XYZ. Click on any of the payment options to proceed. Your account will be credited instantly after payment."
+  //       // payWithPayPal(details.payment, details.username);
+  //     })
+
+    payWithPayPal();
+</script>
+
+
+  </body>
+</html>
